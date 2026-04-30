@@ -1,0 +1,13 @@
+2. Time estimate: 3 hours
+
+3. Enjoyable aspects:
+The scrollytelling activity was the very satisfying to complete. It was very smooth and neat and was cool to play around with. Annotation were intersting as well.
+
+4. Scrollytelling activity was the most time-consuming.  The step4 bar chart transition was tricky to debug because non-top-5 rectangles needed to be hidden
+while top-5 ones transitioned to bar positions.
+
+5. Resources used:
+https://d3js.org/
+https://github.com/susielu/d3-annotation
+
+Used chatgpt to debug and for github assistance as well.
