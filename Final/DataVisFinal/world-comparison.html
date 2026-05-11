@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Met Collection: U.S. vs World</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1>How Global Is The Met Collection?</h1>
+        <nav class="page-nav" aria-label="Page navigation">
+          <a class="page-nav-link" href="index.html">Map View</a>
+          <a class="page-nav-link active" href="world-comparison.html">U.S. vs World</a>
+        </nav>
+        <p class="explain-text">
+          The Metropolitan Museum of Art is in New York, but its collection is deeply international.
+          This view compares objects from the United States with objects from your selected country and the
+          rest of the world, showing how much of the collection comes from outside America.
+        </p>
+      </header>
+
+      <section class="controls">
+        <label for="countryCompareFilter">Choose your country</label>
+        <select id="countryCompareFilter"></select>
+      </section>
+
+      <section class="status-row">
+        <p id="compareStatus">Loading local dataset...</p>
+      </section>
+
+      <section class="comparison-card">
+        <svg id="comparisonChart" role="img" aria-label="Bar chart comparing U.S. and world artifact counts"></svg>
+      </section>
+      <footer class="site-footer">
+        <p>AI disclosure: Generative AI was used extensively to assist with code and data-cleaning logic for this project.</p>
+      </footer>
+    </main>
+
+    <button class="help-button" id="helpButton" type="button" aria-label="Open site help" aria-expanded="false" aria-controls="helpPanel">?</button>
+    <aside class="help-panel" id="helpPanel" role="dialog" aria-modal="false" aria-labelledby="helpTitle" hidden>
+      <div class="help-panel-header">
+        <h2 id="helpTitle">How to Use This Site</h2>
+        <button class="help-close" id="helpCloseButton" type="button" aria-label="Close help">×</button>
+      </div>
+      <div class="help-panel-body">
+        <p>
+          This site explores where objects in The Met collection are recorded as coming from, using open access
+          collection data to make the museum's global reach easier to see.
+        </p>
+        <ul>
+          <li>On this page, choose a country to compare it with the United States and the rest of the world.</li>
+          <li>The bar labels show both artifact counts and each group's share of the loaded dataset.</li>
+          <li>Use the Map View page to explore countries geographically, filter by period, and click a country for artifacts and a timeline.</li>
+        </ul>
+      </div>
+    </aside>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="comparison.js?v=3"></script>
+    <script src="help.js"></script>
+  </body>
+</html>

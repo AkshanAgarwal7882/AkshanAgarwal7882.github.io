@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Met Museum Artifacts by Origin</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#countryExplorerToggle">Skip to country explorer</a>
+<main class="app">
+<header class="header">
+  <h1>Met Collection Origins</h1>
+  <nav class="page-nav" aria-label="Page navigation">
+    <a class="page-nav-link active" href="index.html">Map View</a>
+    <a class="page-nav-link" href="world-comparison.html">U.S. vs World</a>
+  </nav>
+  <p>
+    Choropleth map of artifact origins from
+    <a href="https://github.com/metmuseum/openaccess" target="_blank" rel="noreferrer">
+      The Metropolitan Museum of Art Open Access data
+    </a>
+  </p>
+</header>
+<section class="controls">
+  <label for="periodFilter">Period</label>
+  <select id="periodFilter">
+    <option value="all">All periods</option>
+    <option value="ancient">Ancient (before 500 CE)</option>
+    <option value="medieval">Medieval (500–1499)</option>
+    <option value="earlyModern">Early Modern (1500–1799)</option>
+    <option value="modern">Modern (1800–1944)</option>
+    <option value="contemporary">Contemporary (1945+)</option>
+  </select>
+  <button id="reloadBtn" type="button">Reload Local Data</button>
+</section>
+<section class="status-row">
+  <p id="status" role="status">Loading local dataset...</p>
+  <p id="stats"></p>
+</section>
+<button class="country-explorer-toggle" id="countryExplorerToggle" type="button" aria-expanded="false" aria-controls="countryExplorer">
+  Show Keyboard Country Explorer
+</button>
+<section class="accessibility-panel" id="countryExplorer" aria-labelledby="countryExplorerHeading" hidden>
+  <h2 id="countryExplorerHeading">Keyboard Country Explorer</h2>
+  <p id="mapSummary">Loading country summary...</p>
+  <div class="country-jump-control">
+    <label for="countryJumpSelect">Select a country to investigate</label>
+    <select id="countryJumpSelect" disabled>
+      <option>Loading countries...</option>
+    </select>
+  </div>
+</section>
+<section class="chart-wrap">
+  <svg id="map" role="img" aria-labelledby="mapTitle mapDescription">
+    <title id="mapTitle">World choropleth of artifact origins</title>
+    <desc id="mapDescription">Countries are shaded by artifact count. Use the country explorer before the map for a keyboard and screen reader friendly list of represented countries.</desc>
+  </svg>
+  <div id="tooltip" class="tooltip" aria-hidden="true"></div>
+</section>
+<div class="sr-only" id="selectionAnnouncement" role="status" aria-live="polite"></div>
+
+<!-- ── TIMELINE ─────────────────────────────────────────────────── -->
+<section class="timeline-section" id="timelineSection">
+  <div class="timeline-header">
+    <h2 id="timelineHeading">All Artifacts — Timeline</h2>
+    <button class="timeline-reset-btn" id="timelineResetBtn" hidden>✕ Clear country filter</button>
+  </div>
+  <p class="timeline-sub" id="timelineSub">Each square represents one artifact. Click a country on the map to filter.</p>
+  <div class="timeline-wrap">
+    <svg id="timelineSvg" role="img" aria-label="Artifact timeline"></svg>
+    <div id="timelineTooltip" class="timeline-tooltip" aria-hidden="true"></div>
+  </div>
+</section>
+<!-- ──────────────────────────────────────────────────────────────── -->
+
+<section id="artifactPanelsSection" class="artifact-panels-section">
+  <h2 id="artifactPanelsHeading">Selected Country Artifacts</h2>
+  <p id="artifactPanelsEmpty" class="artifact-panels-empty">Click a country on the map to view up to five artifacts.</p>
+  <div id="artifactPanels" class="artifact-panels" aria-live="polite"></div>
+</section>
+<footer class="site-footer">
+  <p>AI disclosure: Generative AI was used extensively to assist with code and data-cleaning logic for this project.</p>
+</footer>
+</main>
+<button class="help-button" id="helpButton" type="button" aria-label="Open site help" aria-expanded="false" aria-controls="helpPanel">?</button>
+<aside class="help-panel" id="helpPanel" role="dialog" aria-modal="false" aria-labelledby="helpTitle" hidden>
+  <div class="help-panel-header">
+    <h2 id="helpTitle">How to Use This Site</h2>
+    <button class="help-close" id="helpCloseButton" type="button" aria-label="Close help">×</button>
+  </div>
+  <div class="help-panel-body">
+    <p>
+      This site explores where objects in The Met collection are recorded as coming from, using open access
+      collection data to make the museum's global reach easier to see.
+    </p>
+    <ul>
+      <li>Use the period dropdown to filter the map by time period.</li>
+      <li>Use the Keyboard Country Explorer to hear the most represented countries and choose a country without using the map.</li>
+      <li>Hover or click a country on the map to see its artifact count and details.</li>
+      <li>Keyboard users can use the Keyboard Country Explorer instead of tabbing through every country on the map.</li>
+      <li>Open the U.S. vs World page to compare United States objects with another selected country and the rest of the world.</li>
+    </ul>
+  </div>
+</aside>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="script.js?v=3"></script>
+<script src="Timeline.js"></script>
+<script src="help.js"></script>
+</body>
+</html>
